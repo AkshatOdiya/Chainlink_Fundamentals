@@ -21,3 +21,4 @@ This contract integrates with a **custom ERC-20 token** available in this reposi
 🔗 [MyERC20.sol](https://github.com/AkshatOdiya/MyERC20/blob/main/MyERC20.sol)
 
 ---
+You can find the decimals for the different feeds in the [Price Feeds Documentation](https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum\&page=1#sepolia-testnet) (make sure “Show More Details” is checked).
