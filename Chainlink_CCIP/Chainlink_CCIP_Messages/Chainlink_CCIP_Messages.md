@@ -1,0 +1,1 @@
+Everything is in README.md of Chainlink_CCIP_Messages folder
