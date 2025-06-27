@@ -66,6 +66,11 @@ contract Sender is Ownable {
             amount: _amount
         });
         tokenAmounts[0] = tokenAmount;
+/*
+ **Note**:This is hard-coded this to deposit from the EOA associated with the `msg.sender` address on the destination chain. 
+ * Make sure that whatever address is calling `transferTokens` on the source chain has an associated address on the destination chain. 
+ * Alternatively, pass a `_depositor` address as a parameter to the function to make this dynamic.
+*/
         bytes memory depositFunctionCalldata = abi.encodeWithSelector(
             IVault.deposit.selector,
             msg.sender,
