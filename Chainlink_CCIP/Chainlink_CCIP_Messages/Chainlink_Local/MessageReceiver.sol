@@ -30,6 +30,13 @@ contract MessageReceiver is CCIPReceiver {
     constructor(address router) CCIPReceiver(router) {}
 
     /// handle a received message
+    /*
+     * This funciton is defined on `CCIPReceiver` but not implemented.
+     * Called automatically when a CCIP message is received.
+     * Updates state variables with the message details.
+     * Decodes the message data into a string using `abi.decode`.
+     * Emits a `MessageReceived` event with the message details.
+    */
     function _ccipReceive(
         Client.Any2EVMMessage memory any2EvmMessage
     ) internal override {
