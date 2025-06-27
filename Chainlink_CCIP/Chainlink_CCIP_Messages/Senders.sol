@@ -84,6 +84,12 @@ contract Sender is Ownable {
          * `_target`: The `Vault` address is on which to call `deposit`.
         */
 
+/*
+ * This gas limit is used when executing the receiving function on the `Receiver` contract. 
+ * This will make more sense when we write the `Receiver` contract, but essentially, when CCIP executes the cross-chain transfer, it calls a function implemented on the `receiver` contract called `_ccipReceive`. 
+ * This function(_ccipReceive) needs gas to be executed by CCIP. This is where we are specifying this gas limit. Remeber, the `gasLimit` is always referring to the maximum gas you’re authorising to be used on the destination chain.
+*/
+
         Client.EVM2AnyMessage memory message = Client.EVM2AnyMessage({
             receiver: abi.encode(_receiver), // Address of the Receiver contract (abi encoded since the receiver is of type bytes)
             data: abi.encode(
