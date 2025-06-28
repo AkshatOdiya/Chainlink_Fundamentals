@@ -147,6 +147,46 @@ Specifically, a Chainlink Functions consumer smart contract that fetches the wea
 * You have Sepolia ETH and LINK testnet funds.
 
 * You have imported the LINK token on Sepolia to MetaMask.
+In Remix, create a new workspace named "Functions," create a folder called `contracts` and a file called `FunctionsConsumer.sol`. Paste the `FunctionsConsumer.sol` code from the [course code repo](https://github.com/AkshatOdiya/Chainlink_Fundamentals/blob/main/Chainlink_Functions/FunctionsConsumer.sol)
+Compile and deploy the contract on Sepolia testnet.  
+Now we need subscriptionID  
+## Creating a chainlink functions subscription
+Chainlink Functions subscriptions are used to pay for, manage, and track Chainlink Functions requests.
+steps:
+1. Open functions.chain.link, connect your wallet (make sure you are still connected to Sepolia) and click Create Subscription:
+![image](https://github.com/user-attachments/assets/026c74e2-99a8-48e3-83d0-64f4dea764fa)
+2. Enter your email and, optionally, a subscription name.
+![image](https://github.com/user-attachments/assets/dd1b07ee-91c6-44b0-b30a-1b776b6a11a2)
+3. The first time you interact with the Subscription Manager using your wallet, you must accept the Terms of Service (ToS). A MetaMask popup will prompt you to sign a message to accept the TOS.
+![image](https://github.com/user-attachments/assets/00d8ce14-4551-44b7-bdfb-b77ef8cadff8)
+4. MetaMask will then pop up again and ask you to sign a message to approve the subscription creation:
+![image](https://github.com/user-attachments/assets/f0a735cb-853f-44be-8bdd-9e9304443afd)  
+
+5. After the subscription has been approved, MetaMask will pop up a third time and prompt you to sign a message that links the subscription name and email address you provided and ensure you are the subscription owner:
+![image](https://github.com/user-attachments/assets/6535e50f-e500-4ddd-91dd-f4742e096582)  
+6. After the subscription has been created, add funds(4 are enough, if transaction error occurs in remix when you are creating a request you can add more funds to subscription) by clicking the **Add funds** button:
+![image](https://github.com/user-attachments/assets/ed08e266-2f22-43ac-ab26-53d2ef3cd01b)
+Sign the transaction and send the LINK tokens to your subscription. Once the transaction has gone through, your subscription will have been successfully created and funded. It is now ready to add consumer contracts to make Chainlink Functions requests.  
+7. Add consumer which is the address of the `FunctionsConsumer` contract we deployed on sepolia.   
+Sign the message in MetaMask to send the transaction to add the consumer contract to the subscription. Once the transaction has gone through, the subscription configuration is complete, and you will be ready to make your first request!
+8. Copy the subscriptionID.
+
+### Sending request
+Back in Remix, expand the `FunctionsConsumer` contract dropdown in the **Deployed Contracts** section. Find the `getTemperature` function and enter the following parameters:
+
+* `_city`: `London`
+
+* `subscriptionId`: the ID you just copied.
+  Click **transact** and then sign the transaction in MetaMask to make the Chainlink Functions request
+![image](https://github.com/user-attachments/assets/98221682-e609-4a33-b0c7-d79cb0a8feb5)  
+On your subscription overview page, you can see your pending Chainlink Functions request:
+![image](https://github.com/user-attachments/assets/d11aa75f-68b2-4020-ab29-f79ec243a6bc)
+Now, in Remix, if we interact with our `FunctionsConsumer` contract and call the `s_lastTemperature` and `s_lastCity` functions, we can see the returned result
+![image](https://github.com/user-attachments/assets/9ebf34dd-dd17-465d-ad24-279ec54a5e1b)
+
+
+And We are done
+
 
 
 
